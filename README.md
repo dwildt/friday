@@ -30,6 +30,11 @@ Launches the test runner in the interactive watch mode.
 
 Runs the linter on all JavaScript files in the `js/` directory.
 
+### `npm coverage`
+
+Generates a coverage report for the tests, showing how much of the code is covered by tests. The coverage percentages are displayed in the console and a detailed report is generated in the `coverage/` directory.
+
+
 ## Project Standards
 
 Please see `GEMINI.md` for information on project standards and contribution guidelines.

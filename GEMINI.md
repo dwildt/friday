@@ -18,7 +18,18 @@ Before adding any new functionality, please ensure the following:
     ```bash
     npm test
     ```
-3.  **Ensure Quality**: Manually test your changes to ensure that the application is working as expected and that there are no regressions.
+3.  **Ensure Adequate Test Coverage**: New functionality should be accompanied by tests that provide adequate code coverage.
+4.  **Ensure Quality**: Manually test your changes to ensure that the application is working as expected and that there are no regressions.
+
+## Code Coverage
+
+We aim for high code coverage to ensure the reliability and maintainability of our codebase. After implementing new features or fixing bugs, please run the coverage report:
+
+```bash
+npm coverage
+```
+
+Review the report to ensure your changes maintain or improve the overall code coverage, especially for the new or modified code.
 
 ## Atomic Design
 
