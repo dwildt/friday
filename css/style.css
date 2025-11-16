@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* --- TEMPLATES --- */
+.t-main-layout {
+    background-color: #00008b; /* DarkBlue */
+    color: #ffffff; /* White */
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.t-main-layout__header {
+    width: 100%;
+}
+
+.t-main-layout__main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- ORGANISMS --- */
+.o-main-card {
+    max-width: 600px;
+}
+
+.o-site-footer {
+    width: 100%;
+    color: #a9a9a9; /* DarkGray */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* --- MOLECULES --- */
+.m-countdown-display {
+    font-size: 0.8rem;
+    color: #a9a9a9; /* DarkGray */
+    background-color: #000050;
+    padding: 10px;
+    border: 2px solid #a9a9a9;
+    margin-bottom: 20px;
+}
+
+.m-language-switcher {
+    margin-top: 15px;
+}
+
+.m-footer-info p {
+    font-size: 0.8rem; /* Match countdown display */
+    margin: 0;
+}
+
+/* --- ATOMS --- */
+.a-heading {
+    font-size: 2rem;
+    text-shadow: 3px 3px 0px #0000cd; /* MediumBlue */
+}
+
+.a-button {
+    background-color: #4169e1; /* RoyalBlue */
+    color: #ffffff;
+    border: 3px solid #ffffff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 0px #000000;
+    transition: all 0.1s ease-in-out;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.a-button:hover {
+    background-color: #1e90ff; /* DodgerBlue */
+    box-shadow: 3px 3px 0px #000000;
+    transform: translate(2px, 2px);
+}
+
+.a-button:active {
+    box-shadow: 1px 1px 0px #000000;
+    transform: translate(4px, 4px);
+}
+
+.a-button--lang {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin: 0 5px;
+    background: none;
+    border: 2px solid #ffffff;
+}
+
+.a-button--lang.active {
+    background-color: #ffffff;
+    color: #00008b;
+}
+
+.a-text {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    min-height: 50px;
+    line-height: 1.5;
+}
+
+.a-link {
+    color: #a9a9a9; /* DarkGray */
+    text-decoration: none;
+    border-bottom: 1px dashed #a9a9a9;
+}
+
+.a-link:hover {
+    color: #ffffff;
+    border-bottom: 1px dashed #ffffff;
+}
+
+
+/* --- Mobile Styles --- */
+@media (max-width: 768px) {
+    .t-main-layout {
+        justify-content: flex-start;
+    }
+
+    .m-countdown-display {
+        font-size: 0.7rem;
+    }
+
+    .a-heading {
+        font-size: 1.5rem;
+    }
+
+    .a-button {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    .a-text {
+        font-size: 1.2rem;
+    }
+
+    .m-footer-info p {
+        font-size: 0.7rem; /* Match mobile countdown display */
+    }
+}
