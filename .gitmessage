@@ -1,0 +1,53 @@
+# <tipo>: <descrição curta em português>
+# |<----  Máximo 72 caracteres  ---->|
+
+# Corpo da mensagem (opcional)
+# |<----   Quebre em 72 caracteres   ---->|
+
+
+# Rodapé (opcional)
+# Ex: Relacionado a #123
+# Ex: BREAKING CHANGE: descrição da mudança incompatível
+
+
+# --- TIPOS DE COMMIT ---
+# feat:     Nova funcionalidade
+# fix:      Correção de bug
+# docs:     Documentação
+# style:    Formatação (sem mudança de lógica)
+# refactor: Refatoração de código
+# test:     Adicionar ou modificar testes
+# chore:    Tarefas de manutenção
+# ci:       Integração contínua
+# ui:       Interface do usuário
+# perf:     Melhoria de performance
+#
+# --- REGRAS ---
+# ✅ Usar português brasileiro
+# ✅ Usar verbo no infinitivo (adicionar, corrigir, atualizar)
+# ✅ Primeira linha com até 72 caracteres
+# ✅ Separar assunto do corpo com linha em branco
+# ✅ Ser claro e descritivo
+#
+# ❌ NÃO usar verbos conjugados (adicionado, corrigido)
+# ❌ NÃO terminar com ponto final
+# ❌ NÃO ser vago ("fix: ajustes")
+#
+# --- EXEMPLOS ---
+# feat: add new sentences about deploying on Friday
+# fix: fix bug that allowed deploying on Friday
+# docs: explain why deploying on Friday is a bad idea
+# style: change colors to more relaxing weekend tones
+# test: ensure Friday date is always detected
+# chore: update 'it's friday' memes
+# ui: improve layout of the 'do not deploy' button
+#
+# --- BREAKING CHANGES ---
+# Para mudanças incompatíveis, use ! após o tipo:
+# feat!: alterar estrutura de retorno da API
+#
+# E adicione no rodapé:
+# BREAKING CHANGE: descrição detalhada da mudança incompatível
+#
+# --- MAIS INFORMAÇÕES ---
+# Consulte CONTRIBUTING.md para mais detalhes
