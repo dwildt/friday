@@ -13,7 +13,8 @@ const translations = {
             "If it breaks, you get to keep both pieces.",
             "Sure, what could possibly go wrong?",
             "No. Just... no."
-        ]
+        ],
+        footer: 'Built with <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> and available on <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>'
     },
     pt: {
         question: "Devo fazer deploy na sexta-feira?",
@@ -29,7 +30,8 @@ const translations = {
             "Se quebrar, você fica com os dois pedaços.",
             "Claro, o que poderia dar errado?",
             "Não. Apenas... não."
-        ]
+        ],
+        footer: 'Construído com <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> e disponível no <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>'
     },
     es: {
         question: "¿Debería desplegar en viernes?",
@@ -45,7 +47,8 @@ const translations = {
             "Si se rompe, te quedas con las dos piezas.",
             "Claro, ¿qué podría salir mal?",
             "No. Simplemente... no."
-        ]
+        ],
+        footer: 'Desarrollado con <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> y disponible en <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>'
     }
 };
 
@@ -91,6 +94,8 @@ function setLanguage(lang) {
         questionEl.textContent = translations[lang].question;
         deployButton.textContent = translations[lang].button;
         answerEl.textContent = '';
+        const footerInfoEl = document.getElementById('footer-info');
+        if (footerInfoEl) footerInfoEl.innerHTML = translations[lang].footer;
 
         for (const key in langButtons) {
             if(langButtons[key]) langButtons[key].classList.remove('active');

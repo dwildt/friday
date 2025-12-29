@@ -13,6 +13,7 @@ describe('Deploy Friday App', () => {
             <h1 id="question"></h1>
             <button id="deploy-button"></button>
             <div id="answer"></div>
+            <p id="footer-info"></p>
             <div class="language-switcher">
                 <button id="lang-en"></button>
                 <button id="lang-pt"></button>
@@ -38,24 +39,30 @@ describe('Deploy Friday App', () => {
             setLanguage('en');
             const questionEl = document.getElementById('question');
             const deployButton = document.getElementById('deploy-button');
+            const footerInfoEl = document.getElementById('footer-info');
             expect(questionEl.textContent).toBe(translations.en.question);
             expect(deployButton.textContent).toBe(translations.en.button);
+            expect(footerInfoEl.innerHTML).toBe(translations.en.footer);
         });
 
         it('should update the text content to Portuguese', () => {
             setLanguage('pt');
             const questionEl = document.getElementById('question');
             const deployButton = document.getElementById('deploy-button');
+            const footerInfoEl = document.getElementById('footer-info');
             expect(questionEl.textContent).toBe(translations.pt.question);
             expect(deployButton.textContent).toBe(translations.pt.button);
+            expect(footerInfoEl.innerHTML).toBe(translations.pt.footer);
         });
 
         it('should update the text content to Spanish', () => {
             setLanguage('es');
             const questionEl = document.getElementById('question');
             const deployButton = document.getElementById('deploy-button');
+            const footerInfoEl = document.getElementById('footer-info');
             expect(questionEl.textContent).toBe(translations.es.question);
             expect(deployButton.textContent).toBe(translations.es.button);
+            expect(footerInfoEl.innerHTML).toBe(translations.es.footer);
         });
     });
 
