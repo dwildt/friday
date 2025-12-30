@@ -14,7 +14,11 @@ const translations = {
             "Sure, what could possibly go wrong?",
             "No. Just... no."
         ],
-        footer: 'Built with <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> and available on <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>'
+        footer: 'Built with <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> and available on <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>',
+        special: {
+            christmas: "It's Christmas. Simply don't.",
+            newYear: "It's New Year's. Simply don't."
+        }
     },
     pt: {
         question: "Devo fazer deploy na sexta-feira?",
@@ -31,7 +35,11 @@ const translations = {
             "Claro, o que poderia dar errado?",
             "Não. Apenas... não."
         ],
-        footer: 'Construído com <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> e disponível no <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>'
+        footer: 'Construído com <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> e disponível no <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>',
+        special: {
+            christmas: "É Natal. Simplesmente não faça.",
+            newYear: "É Ano Novo. Simplesmente não faça."
+        }
     },
     es: {
         question: "¿Debería desplegar en viernes?",
@@ -48,7 +56,11 @@ const translations = {
             "Claro, ¿qué podría salir mal?",
             "No. Simplemente... no."
         ],
-        footer: 'Desarrollado con <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> y disponible en <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>'
+        footer: 'Desarrollado con <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="a-link">Gemini</a> y disponible en <a href="https://github.com/dwildt/friday/" target="_blank" rel="noopener noreferrer" class="a-link">GitHub</a>',
+        special: {
+            christmas: "Es Navidad. Simplemente no lo hagas.",
+            newYear: "Es Año Nuevo. Simplemente no lo hagas."
+        }
     }
 };
 
@@ -98,21 +110,54 @@ function setLanguage(lang) {
         if (footerInfoEl) footerInfoEl.innerHTML = translations[lang].footer;
 
         for (const key in langButtons) {
-            if(langButtons[key]) langButtons[key].classList.remove('active');
+            if (langButtons[key]) langButtons[key].classList.remove('active');
         }
-        if(langButtons[lang]) langButtons[lang].classList.add('active');
+        if (langButtons[lang]) langButtons[lang].classList.add('active');
         updateFridayCountdown();
     }
 }
 
+function checkSpecialDate() {
+    const today = new Date();
+    const month = today.getMonth(); // 0-11
+    const date = today.getDate();
+
+    // Christmas: Dec 24, 25
+    if (month === 11 && (date === 24 || date === 25)) {
+        return 'christmas';
+    }
+
+    // New Year: Dec 31, Jan 1
+    if ((month === 11 && date === 31) || (month === 0 && date === 1)) {
+        return 'newYear';
+    }
+
+    return null;
+}
+
 function showRandomAnswer() {
-    const answers = translations[currentLang].answers;
-    const randomIndex = Math.floor(Math.random() * answers.length);
+    const specialEvent = checkSpecialDate();
+    let answerText = '';
+
+    if (specialEvent) {
+        answerText = translations[currentLang].special[specialEvent];
+        if (typeof document !== 'undefined') {
+            document.body.classList.add('t-main-layout--warning');
+        }
+    } else {
+        const answers = translations[currentLang].answers;
+        const randomIndex = Math.floor(Math.random() * answers.length);
+        answerText = answers[randomIndex];
+        if (typeof document !== 'undefined') {
+            document.body.classList.remove('t-main-layout--warning');
+        }
+    }
+
     if (typeof document !== 'undefined') {
         const answerEl = document.getElementById('answer');
-        answerEl.textContent = answers[randomIndex];
+        answerEl.textContent = answerText;
     }
-    return answers[randomIndex];
+    return answerText;
 }
 
 function getDaysUntilFriday(today) {
@@ -159,6 +204,10 @@ if (typeof module !== 'undefined') {
         setLanguage,
         showRandomAnswer,
         getDaysUntilFriday,
+        setLanguage,
+        showRandomAnswer,
+        getDaysUntilFriday,
+        checkSpecialDate,
         initApp
     };
 }

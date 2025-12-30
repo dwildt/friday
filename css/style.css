@@ -150,3 +150,14 @@
         font-size: 0.7rem; /* Match mobile countdown display */
     }
 }
+
+/* --- Utilities & Animations --- */
+@keyframes blink-warning {
+    0% { background-color: #8b0000; } /* DarkRed */
+    50% { background-color: #ff0000; } /* Red */
+    100% { background-color: #8b0000; } /* DarkRed */
+}
+
+.t-main-layout--warning {
+    animation: blink-warning 1s infinite;
+}
