@@ -82,4 +82,53 @@ describe('Deploy Friday App', () => {
             expect(getDaysUntilFriday(today)).toBe(6);
         });
     });
+
+    describe('Special Dates', () => {
+        let originalDate;
+
+        beforeAll(() => {
+            originalDate = global.Date;
+        });
+
+        afterAll(() => {
+            global.Date = originalDate;
+        });
+
+        const mockDate = (isoDate) => {
+            const fixedDate = new originalDate(isoDate);
+            global.Date = class extends originalDate {
+                constructor(...args) {
+                    super(...args);
+                    if (args.length) {
+                        return new originalDate(...args);
+                    }
+                    return fixedDate;
+                }
+            };
+        };
+
+        it('should show Christmas warning on Dec 25', () => {
+            mockDate('2025-12-25T10:00:00');
+            setLanguage('en');
+            const answer = showRandomAnswer();
+            expect(answer).toBe("It's Christmas. Simply don't.");
+            expect(document.body.classList.contains('t-main-layout--warning')).toBe(true);
+        });
+
+        it('should show New Year warning on Jan 1', () => {
+            mockDate('2026-01-01T10:00:00');
+            setLanguage('en');
+            const answer = showRandomAnswer();
+            expect(answer).toBe("It's New Year's. Simply don't.");
+            expect(document.body.classList.contains('t-main-layout--warning')).toBe(true);
+        });
+
+        it('should show normal answer on non-special date', () => {
+            mockDate('2025-11-20T10:00:00'); // Normal day
+            setLanguage('en');
+            const answer = showRandomAnswer();
+            expect(translations.en.answers).toContain(answer);
+            expect(document.body.classList.contains('t-main-layout--warning')).toBe(false);
+        });
+    });
 });
